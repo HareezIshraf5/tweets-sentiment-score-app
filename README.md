@@ -1,4 +1,4 @@
-# cgpa_calculator
+# cgpacalculator
 
 A new Flutter project.
 

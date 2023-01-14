@@ -1,6 +1,6 @@
 {
-    "name": "cgpa_calculator",
-    "short_name": "cgpa_calculator",
+    "name": "cgpacalculator",
+    "short_name": "cgpacalculator",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

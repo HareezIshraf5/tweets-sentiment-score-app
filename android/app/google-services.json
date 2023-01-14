@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "263260051303",
-    "project_id": "cgpa-calculator-a936e",
-    "storage_bucket": "cgpa-calculator-a936e.appspot.com"
+    "project_number": "279803557281",
+    "project_id": "cgpacalculator-3dc6d",
+    "storage_bucket": "cgpacalculator-3dc6d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:263260051303:android:cada3203b1fe31170281c2",
+        "mobilesdk_app_id": "1:279803557281:android:71d5b34d926631e5b4c7e0",
         "android_client_info": {
-          "package_name": "com.example.cgpa_calculator"
+          "package_name": "com.example.cgpacalculator"
         }
       },
       "oauth_client": [
         {
-          "client_id": "263260051303-lt7tf3sm2bmqf3t5qgg7vs8v5vnuu6ge.apps.googleusercontent.com",
+          "client_id": "279803557281-61r7oaoa0gceh8dou1ns0ebe35mbs5d1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAXuqQRx00xR5L6zdW41q7WAltJm9OtCKo"
+          "current_key": "AIzaSyCMw7l4XbpxMRAiGY3-zNGsJf4nTgeN8-Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "263260051303-lt7tf3sm2bmqf3t5qgg7vs8v5vnuu6ge.apps.googleusercontent.com",
+              "client_id": "279803557281-61r7oaoa0gceh8dou1ns0ebe35mbs5d1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
