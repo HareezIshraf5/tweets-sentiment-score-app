@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 // welcome back, you've been missed!
                 Text(
-                  'Welcome to CGPA Calculator',
+                  'Welcome to Tweets Sentiment Score',
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 16,
