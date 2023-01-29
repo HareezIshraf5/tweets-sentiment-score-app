@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'components/my_button.dart';
 import 'components/my_textfield.dart';
 //import 'components/square_tile.dart';
@@ -100,13 +99,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 50),
 
                   // logo
-                   Text(
-                    'Create your\n account',
-                    style: GoogleFonts.raleway(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 35,
-                    ),
+                  Text(
+                   'Create your\naccount',
+                   style: TextStyle(
+                     fontFamily: 'Raleway',
+                     fontWeight: FontWeight.w700,
+                     color: Colors.white,
+                     fontSize: 35,
+                   ),
                   ),
                   const SizedBox(height: 75),
 
@@ -198,16 +198,20 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         'Already have an account?',
-                        style: GoogleFonts.raleway(color: Colors.white54),
+                        style: TextStyle(
+                          fontFamily: 'Raleway',
+                          color: Colors.white54,
+                        ),
                       ),
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,
                         child: Text(
                           'Login now',
-                          style: GoogleFonts.raleway(
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700,
                             color: Colors.blue,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

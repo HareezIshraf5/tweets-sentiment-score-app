@@ -18,6 +18,9 @@ class _FirebaseDataPageState extends State<FirebaseDataPage> {
     FirebaseAuth.instance.signOut();
   }
 
+  String query_keyword = '';
+  String sentiment_score = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +36,7 @@ class _FirebaseDataPageState extends State<FirebaseDataPage> {
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
-            .collection('Users')
+            .collection('Users ID')
             .where("uid", isEqualTo: user.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -63,8 +66,6 @@ class _FirebaseDataPageState extends State<FirebaseDataPage> {
                       child: Text(
                         'Tweets                     :      ${documentSnapshot['Data']}',
                         //getText(documentSnapshot),
-
-                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   ],

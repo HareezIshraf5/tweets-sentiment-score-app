@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'components/my_button.dart';
 import 'components/my_textfield.dart';
 
@@ -92,8 +91,9 @@ class _LoginPageState extends State<LoginPage> {
                   // logo
                  Text(
                     'Log in',
-                    style:GoogleFonts.raleway(
-                      fontWeight: FontWeight.bold,
+                    style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
                       fontSize: 35,
                     ),
@@ -128,7 +128,10 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Text(
                           'Forgot Password?',
-                          style: GoogleFonts.raleway(color: Colors.white),
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -196,16 +199,20 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text(
                         'Don\'t have account?',
-                        style: GoogleFonts.raleway(color: Colors.white54),
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            color: Colors.white54,
+                          ),
                       ),
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,
                         child: Text(
                           'Sign Up',
-                          style: GoogleFonts.raleway(
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700,
                             color: Colors.blue,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

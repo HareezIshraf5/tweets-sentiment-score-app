@@ -17,7 +17,15 @@ class _HomePageState extends State<HomePage> {
   late String urlstring;
   late Uri url;
   var Data;
-  String QueryText = 'Query Amin';
+  String sentiment_score = '';
+  String tweet_selected = '';
+
+  var temp = {
+    'Query': "Party",
+    'score': 0.3,
+    'tweets': "[b'hi']",
+  };
+
 
   // sign user out method
   void signUserOut() {
@@ -42,7 +50,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           TextField(
             onChanged: (value) {
-              urlstring = 'http://10.0.2.2:5000/api?Query=' + value.toString();
+              urlstring = 'https://tweet-sentimentscore.herokuapp.com/?Query=' + value.toString();
               url = Uri.parse(urlstring);
             },
             decoration: InputDecoration(
@@ -50,32 +58,47 @@ class _HomePageState extends State<HomePage> {
               onTap: () async {
                 Data = await Getdata(url);
                 var DecodedData = jsonDecode(Data);
+                DecodedData.add(temp);
 
-                setState(() async {
-                  QueryText = (DecodedData['score']).toString();
-                  try {
-                    Map<String, dynamic> admin = {
-                      "Data": QueryText,
-                      "uid": user.uid
-                    };
-                    final databaseReference = FirebaseFirestore.instance
-                        .collection('Users ID')
-                        .doc(user.uid);
-                    await databaseReference.set(admin);
-                  } catch (e) {
-                    print(e);
-                  }
+                setState(()  {
+                  sentiment_score = (DecodedData[0]['score']).toString();
+
+                  for (int i = 0; i < 10; i++) {
+                    print(i);
+                  } 
+                  tweet_selected = (DecodedData[0]['tweets'][1]).toString();
+
                 });
+
+                // retrieve
+
+
+                // send to database
+                try {
+                  Map<String, dynamic> admin = {
+                    "Data": DecodedData,
+                    "uid": user.uid
+                  };
+                  final databaseReference = FirebaseFirestore.instance
+                      .collection('Users ID')
+                      .doc(user.uid);
+                  await databaseReference.set(admin);
+                } catch (e) {
+                  print(e);
+                }
               },
               child: const Icon(Icons.search),
             )),
           ),
           Text(
-            QueryText,
+            sentiment_score,
+          ),
+          Text(
+            tweet_selected,
           ),
           ElevatedButton(
             onPressed: () async {
-              Map<String, dynamic> admin = {"Data": QueryText, "uid": user.uid};
+              Map<String, dynamic> admin = {"Data": sentiment_score, "uid": user.uid};
               final databaseReference =
                   FirebaseFirestore.instance.collection('Users').doc(user.uid);
               await databaseReference.set(admin);
