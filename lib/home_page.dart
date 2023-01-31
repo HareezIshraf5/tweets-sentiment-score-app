@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                       url = Uri.parse(urlstring);
                     },
                     decoration: InputDecoration(
-                        hintText: 'Search',
+                        hintText: 'Search a  keyword',
                         filled: true,
                         fillColor: Color.fromARGB(255, 220, 225, 231),
                         focusedBorder: OutlineInputBorder(
