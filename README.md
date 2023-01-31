@@ -10,7 +10,14 @@ A mobile app that provide approximate sentiment score to 200 latest public tweet
 4. MUHAMMAD FAHMI FAKHIR (1811481)
 
 ## Compilation & Running Instruction 
-1. E
+1. Fork the repository.
+2. Clone the forked repository.
+4. Connect with a device/virtual device.
+3. Execute by typing code snippet below on console in the cloned local repository. (Pub Get is going to run too, to make all the mentioned dependencies available)
+```
+flutter run
+```
+
 
 ## FireBase Authentication & Database
 * We utilized FireBase as our database storage to store all the information the users.
@@ -46,4 +53,4 @@ The corpus can be found in the hosted github repository.
 ## Homepage and history 
 ![2](https://user-images.githubusercontent.com/66345597/215772461-bc565468-82e5-48d8-9114-4ee28c7bac34.png)
 > disclaimer : This app can only search using one keyword at a time. (Homepage) 
-> The tweets log required touch to scroll down. (History page)
+> The tweets log required touch/hold to scroll down. (History page)
