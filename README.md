@@ -1,7 +1,7 @@
-# FeelTweet
-
+# FeelTweets
 A mobile app that provide approximate sentiment score to 200 latest public tweets.
 
+![image](https://user-images.githubusercontent.com/57680454/215766499-1e120cdf-1a83-4087-8e7d-5a96c537cf7c.png)
 
 ### Group Members
 1. AMIN NUR RASYID BIN ZULKIFLI (1919555)
