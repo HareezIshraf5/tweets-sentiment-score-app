@@ -17,7 +17,7 @@ A mobile app that provide approximate sentiment score to 200 latest public tweet
 ```
 flutter run
 ```
-the application .apk can be found at 
+if you wish to get the application .apk, it can be found at 
 ```
 build\app\outputs\flutter-apk\app-release.apk
 ```
