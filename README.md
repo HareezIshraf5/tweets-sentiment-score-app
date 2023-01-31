@@ -1,7 +1,7 @@
-# FeelTweet
-
+# FeelTweets
 A mobile app that provide approximate sentiment score to 200 latest public tweets.
 
+![image](https://user-images.githubusercontent.com/57680454/215766499-1e120cdf-1a83-4087-8e7d-5a96c537cf7c.png)
 
 ### Group Members
 1. AMIN NUR RASYID BIN ZULKIFLI (1919555)
@@ -10,7 +10,17 @@ A mobile app that provide approximate sentiment score to 200 latest public tweet
 4. MUHAMMAD FAHMI FAKHIR (1811481)
 
 ## Compilation & Running Instruction 
-1. E
+1. Fork the repository.
+2. Clone the forked repository.
+3. Connect with a device/virtual device.
+4. Execute by typing code snippet below on console in the cloned local repository. (Pub Get is going to run too, to make all the mentioned dependencies available)
+```
+flutter run
+```
+if you wish to get the application .apk, it can be found at 
+```
+build\app\outputs\flutter-apk\app-release.apk
+```
 
 ## FireBase Authentication & Database
 * We utilized FireBase as our database storage to store all the information the users.
@@ -40,6 +50,10 @@ Sentiment Score is depicted as scale from -2 to +2. The scale can be interpreted
 
 The corpus can be found in the hosted github repository.
 
-## UI - fahmi
+## User login and regstration 
+![1](https://user-images.githubusercontent.com/66345597/215772430-2fabda04-59af-4608-8b40-1a54bcb2c749.png)
 
-## UI - haziq
+## Homepage and history 
+![2](https://user-images.githubusercontent.com/66345597/215772461-bc565468-82e5-48d8-9114-4ee28c7bac34.png)
+> disclaimer : This app can only search using one keyword at a time. (Homepage) 
+> The tweets log required touch/hold to scroll down. (History page)
