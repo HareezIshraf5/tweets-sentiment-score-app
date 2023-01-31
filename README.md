@@ -2,6 +2,16 @@
 
 A mobile app that provide approximate sentiment score to 200 latest public tweets.
 
+
+### Group Members
+1. AMIN NUR RASYID BIN ZULKIFLI (1919555)
+2. HAREEZ ISHRAF BIN HAZRUDDEN (1911923)
+3. ABDUL HAZIQ BIN ZULKIFLI (1917923)
+4. MUHAMMAD FAHMI FAKHIR (1811481)
+
+## Compilation & Running Instruction 
+1. E
+
 ## FireBase Authentication & Database
 * We utilized FireBase as our database storage to store all the information the users.
 * The Authentication process utilized the FireBase where it retrieves the email and the password of the users.
