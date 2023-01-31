@@ -9,10 +9,6 @@ A mobile app that provide approximate sentiment score to 200 latest public tweet
 We hosted our own Python script with Flask using Heroku. ([access  here](https://github.com/aminnurrasyid/tweet-sentimentscore-api))<br>
 This script requests tweets from Twitter API and process texts which output an approximate sentiment score out of it.<br>
 
-Text-processing includes:-
-* tokenizing
-* lemmatizing
-
 ### Twitter API
 We utilized this API to get the latest 200 public tweets from Twitter that contain a specified keyword (will be queried by User).<br>
 Tweets are filtered to **only English tweets and non-retweet tweets**.
