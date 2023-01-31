@@ -12,12 +12,15 @@ A mobile app that provide approximate sentiment score to 200 latest public tweet
 ## Compilation & Running Instruction 
 1. Fork the repository.
 2. Clone the forked repository.
-4. Connect with a device/virtual device.
-3. Execute by typing code snippet below on console in the cloned local repository. (Pub Get is going to run too, to make all the mentioned dependencies available)
+3. Connect with a device/virtual device.
+4. Execute by typing code snippet below on console in the cloned local repository. (Pub Get is going to run too, to make all the mentioned dependencies available)
 ```
 flutter run
 ```
-
+the application .apk can be found at 
+```
+build\app\outputs\flutter-apk\app-release.apk
+```
 
 ## FireBase Authentication & Database
 * We utilized FireBase as our database storage to store all the information the users.
