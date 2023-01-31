@@ -39,6 +39,7 @@ class TweetList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      physics: const AlwaysScrollableScrollPhysics(),
       shrinkWrap: true,
       children: tweets.map((tweet) => TweetCard(
         query: tweet['Query'],
@@ -98,14 +99,18 @@ class _FirebaseDataPageState extends State<FirebaseDataPage> {
                   snapshot.data!.docs[index];
 
             List DecodedHistory = jsonDecode(documentSnapshot['Data']);
+            List reversedDecodedHistory = DecodedHistory.reversed.toList();
+
 
             return Center(
               child: Column(
                 children: <Widget> [
                     Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
                       child: 
                         TweetList( //listview
-                          tweets: DecodedHistory,
+                          tweets: reversedDecodedHistory,
                         ),
                     )
                     //"${documentSnapshot['Data']}" - to get whole json
