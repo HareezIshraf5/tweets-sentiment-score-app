@@ -40,8 +40,10 @@ Sentiment Score is depicted as scale from -2 to +2. The scale can be interpreted
 
 The corpus can be found in the hosted github repository.
 
-## UI - fahmi
+## User login and regstration 
 ![1](https://user-images.githubusercontent.com/66345597/215772430-2fabda04-59af-4608-8b40-1a54bcb2c749.png)
 
-## UI - haziq
+## Homepage and history 
 ![2](https://user-images.githubusercontent.com/66345597/215772461-bc565468-82e5-48d8-9114-4ee28c7bac34.png)
+> disclaimer : This app can only search using one keyword at a time. (Homepage) 
+> The tweets log required touch to scroll down. (History page)
