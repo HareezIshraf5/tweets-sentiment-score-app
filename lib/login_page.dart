@@ -104,17 +104,6 @@ class _LoginPageState extends State<LoginPage> {
                     'Log in',
                     style: TextStyle(
                       fontFamily: 'Raleway',
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-    
-                  const SizedBox(height: 50),
-                  const Text(
-                    'Log in',
-                    style: TextStyle(
-                      fontFamily: 'Raleway',
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
                       fontSize: 20,
