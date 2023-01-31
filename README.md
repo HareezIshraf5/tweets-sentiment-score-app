@@ -4,7 +4,7 @@ A mobile app that provide approximate sentiment score to 200 latest public tweet
 
 ## FireBase Authentication & Database
 * We utilized FireBase as our database storage to store all the information the users.
-* The Authentication process utilized the FireBase where we put the email and the password of the users.
+* The Authentication process utilized the FireBase where it retrieves the email and the password of the users.
 * The search and tweets history entered by the users can be be retrieved from the FireBase according to the users UID once the users logged in.
 
 ## Application Programming Interface (API)
