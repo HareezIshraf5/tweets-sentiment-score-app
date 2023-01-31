@@ -41,5 +41,7 @@ Sentiment Score is depicted as scale from -2 to +2. The scale can be interpreted
 The corpus can be found in the hosted github repository.
 
 ## UI - fahmi
+![1](https://user-images.githubusercontent.com/66345597/215772430-2fabda04-59af-4608-8b40-1a54bcb2c749.png)
 
 ## UI - haziq
+![2](https://user-images.githubusercontent.com/66345597/215772461-bc565468-82e5-48d8-9114-4ee28c7bac34.png)
