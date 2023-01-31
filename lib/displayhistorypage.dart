@@ -3,6 +3,52 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 
+class TweetCard extends StatelessWidget {
+  final String query;
+  final String score;
+  final List<String> tweets;
+
+  TweetCard({required this.query,required  this.score,required  this.tweets});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            title: Text('Query: $query'),
+            subtitle: Text('Score: $score'),
+          ),
+          Divider(),
+          Column(
+            children: tweets.map((tweet) => ListTile(
+              title: Text(tweet),
+            )).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TweetList extends StatelessWidget {
+  final List<dynamic> tweets;
+
+  TweetList({required this.tweets});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      shrinkWrap: true,
+      children: tweets.map((tweet) => TweetCard(
+        query: tweet['Query'],
+        score: tweet['score'],
+        tweets: tweet['tweets'].cast<String>(),
+      )).toList(),
+    );
+  }
+}
+
 class FirebaseDataPage extends StatefulWidget {
   FirebaseDataPage({Key? key}) : super(key: key);
 
@@ -53,42 +99,19 @@ class _FirebaseDataPageState extends State<FirebaseDataPage> {
 
             List DecodedHistory = jsonDecode(documentSnapshot['Data']);
 
-            final item =  DecodedHistory[0]['tweets'];
-
-              return Center(
-                child: Column(
-                  children: <Widget>[
-                    Expanded(         
-                      child: ListView.builder(
-                        itemCount: item.length,
-                        itemBuilder: (BuildContext context,int index) {
-                          return Card(
-                            child: ListTile(title: Text(item[index]),)
-                          );
-                        },
-                      ),
-                    ),
-                    //Container(
-                    //  padding: const EdgeInsets.all(8),
-                    //  child: ClipRRect(
-                    //    borderRadius: BorderRadius.circular(8),
-                    //    child: Text(
-                    //      DecodedHistory[0]['tweets'][0],
-                    //    ),
-                    //  ),
-                    //),
-                    //Padding(
-                    //  padding: const EdgeInsets.all(8.0),
-                    //  child: Text(
-                    //    //DecodedHistory[0]['tweets'],  // to access the list
-                    //    DecodedHistory[0]['tweets'][0], 
-                    //    // DecodedHistory.length - to get the length of json
-                    //    //"${documentSnapshot['Data']}" - to get whole json
-                    //  ),
-                    //),
-                  ],
-                ),
-              );
+            return Center(
+              child: Column(
+                children: <Widget> [
+                    Container(
+                      child: 
+                        TweetList( //listview
+                          tweets: DecodedHistory,
+                        ),
+                    )
+                    //"${documentSnapshot['Data']}" - to get whole json
+                ]
+              ),
+            );
             }),
           );
         },
