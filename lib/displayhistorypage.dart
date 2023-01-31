@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseDataPage extends StatefulWidget {
@@ -43,31 +44,48 @@ class _FirebaseDataPageState extends State<FirebaseDataPage> {
           if (!snapshot.hasData) {
             return const Text("Loading... noo");
           }
-
+          
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
             itemBuilder: ((context, index) {
               final DocumentSnapshot documentSnapshot =
                   snapshot.data!.docs[index];
 
-              return Card(
-                margin: const EdgeInsets.all(10),
+            List DecodedHistory = jsonDecode(documentSnapshot['Data']);
+
+            final item =  DecodedHistory[0]['tweets'];
+
+              return Center(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
+                  children: <Widget>[
+                    Expanded(         
+                      child: ListView.builder(
+                        itemCount: item.length,
+                        itemBuilder: (BuildContext context,int index) {
+                          return Card(
+                            child: ListTile(title: Text(item[index]),)
+                          );
+                        },
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Tweets                     :      ${documentSnapshot['Data']}',
-                        //getText(documentSnapshot),
-                      ),
-                    ),
+                    //Container(
+                    //  padding: const EdgeInsets.all(8),
+                    //  child: ClipRRect(
+                    //    borderRadius: BorderRadius.circular(8),
+                    //    child: Text(
+                    //      DecodedHistory[0]['tweets'][0],
+                    //    ),
+                    //  ),
+                    //),
+                    //Padding(
+                    //  padding: const EdgeInsets.all(8.0),
+                    //  child: Text(
+                    //    //DecodedHistory[0]['tweets'],  // to access the list
+                    //    DecodedHistory[0]['tweets'][0], 
+                    //    // DecodedHistory.length - to get the length of json
+                    //    //"${documentSnapshot['Data']}" - to get whole json
+                    //  ),
+                    //),
                   ],
                 ),
               );

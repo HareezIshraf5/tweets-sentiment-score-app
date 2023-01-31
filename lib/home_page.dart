@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'api.dart';
 import 'dart:convert';
+import 'dart:math';
 import 'displayhistorypage.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,17 +15,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
+  Random random = new Random();
   late String urlstring;
   late Uri url;
   var Data;
-  String sentiment_score = '';
-  String tweet_selected = '';
-
-  var temp = {
-    'Query': "Party",
-    'score': 0.3,
-    'tweets': "[b'hi']",
-  };
+  var json_holder = [];
+  bool loading = false;
+  List<String> tweet_list = <String>[];
+  String sentiment_score = 'a';
 
 
   // sign user out method
@@ -54,47 +52,72 @@ class _HomePageState extends State<HomePage> {
               url = Uri.parse(urlstring);
             },
             decoration: InputDecoration(
-                suffixIcon: GestureDetector(
-              onTap: () async {
-                Data = await Getdata(url);
-                var DecodedData = jsonDecode(Data);
-                DecodedData.add(temp);
+                suffixIcon: loading
+                ? CircularProgressIndicator()
+                : GestureDetector(
+                onTap: () async {
 
-                setState(()  {
-                  sentiment_score = (DecodedData[0]['score']).toString();
+                  setState(() {
+                    loading = true;
+                  });
 
-                  for (int i = 0; i < 10; i++) {
-                    print(i);
-                  } 
-                  tweet_selected = (DecodedData[0]['tweets'][1]).toString();
+                  Data = await Getdata(url); // json came as a list, must specified index 
+                  var DecodedData = jsonDecode(Data);
 
-                });
+                  setState(()  {
+                    sentiment_score = (DecodedData[0]['score']).toString();
 
-                // retrieve
+                    for (int i = 0; i < 10; i++) {
+                      int randomNumber = random.nextInt(200);
+                      tweet_list.add(DecodedData[0]['tweets'][randomNumber]);
+                    }
 
+                    loading = false;
+                    FocusScope.of(context).unfocus();
+                  });
 
-                // send to database
-                try {
-                  Map<String, dynamic> admin = {
-                    "Data": DecodedData,
-                    "uid": user.uid
+                  // create a json var out of search result
+                  var temp = {
+                    'Query': DecodedData[0]['Query'],
+                    'score': sentiment_score,
+                    'tweets': tweet_list,
                   };
-                  final databaseReference = FirebaseFirestore.instance
+
+                  // Retrieve the data from Firebase Firestore
+                  final snapshot = await FirebaseFirestore.instance
                       .collection('Users ID')
-                      .doc(user.uid);
-                  await databaseReference.set(admin);
-                } catch (e) {
-                  print(e);
-                }
-              },
+                      .doc(user.uid)
+                      .get();
+                  var retrievedData = snapshot.data();
+                  var jsonHolder = [];
+                  if (retrievedData != null) {
+                    // If there is data in Firebase, append the new data to it
+                    jsonHolder = jsonDecode(retrievedData['Data']);
+                    jsonHolder.add(temp);
+                  } else {
+                    // If there is no data in Firebase, create a new JSON object with the new data
+                    jsonHolder.add(temp);
+                  }
+
+                  // Convert the JSON object to a string and send it to Firebase
+                  var tempJSON = jsonEncode(jsonHolder);
+
+                  // send to database
+                  try {
+                    Map<String, dynamic> admin = {
+                      "Data": tempJSON,
+                      "uid": user.uid
+                    };
+                    final databaseReference = FirebaseFirestore.instance
+                        .collection('Users ID')
+                        .doc(user.uid);
+                    await databaseReference.set(admin);
+                  } catch (e) {
+                    print(e);
+                  }
+                },
               child: const Icon(Icons.search),
             )),
-          ),
-          Text(
-            sentiment_score,
-          ),
-          Text(
-            tweet_selected,
           ),
           ElevatedButton(
             onPressed: () async {
@@ -113,7 +136,20 @@ class _HomePageState extends State<HomePage> {
               );
             },
             child: Text("History"),
-          )
+          ),
+          Text(
+            sentiment_score,
+          ),
+          Expanded(         
+            child: ListView.builder(
+              itemCount: tweet_list.length,
+              itemBuilder: (BuildContext context,int index) {
+                return Card(
+                  child: ListTile(title: Text(tweet_list[index]),)
+                );
+              },
+            ),
+          ),
         ],
       )),
     );

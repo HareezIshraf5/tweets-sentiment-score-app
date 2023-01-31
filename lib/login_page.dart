@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0)
           ),
-          backgroundColor: Colors.white70,
+          backgroundColor: Colors.white,
           title: const Center(
             child: Text(
               'Error',
@@ -89,17 +89,26 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 70),
                   
                   // logo
-                 Text(
+                  const Text(
+                    'FeelTweets',
+                    style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                      fontSize: 35,
+                    ),
+                  ),
+
+                  const SizedBox(height: 50),
+                  const Text(
                     'Log in',
                     style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: 35,
+                      fontSize: 20,
                     ),
                   ),
-    
-                  const SizedBox(height: 50),
     
                   const SizedBox(height: 25),
     
@@ -120,23 +129,6 @@ class _LoginPageState extends State<LoginPage> {
     
                   const SizedBox(height: 60),
     
-                  // forgot password?
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                            fontFamily: 'Raleway',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-    
                   const SizedBox(height: 60),
     
                   // sign in button
@@ -145,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: signUserIn,
                   ),
     
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 70),
     
                   // or continue with
                   // Padding(
@@ -197,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Don\'t have account?',
                           style: TextStyle(
                             fontFamily: 'Raleway',
@@ -207,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,
-                        child: Text(
+                        child: const Text(
                           'Sign Up',
                           style: TextStyle(
                             fontFamily: 'Raleway',
