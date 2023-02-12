@@ -66,6 +66,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   TextField(
                     onChanged: (value) {
+                      // this API call towards our hosted API currently will not return anything since it depends on Twitter API, which is currently changed to a paid plan.
+                      // the call function can be referred to api.dart
+                      // further evaluation process can be made by checking our hosted API github repo
+                      // find it here : https://github.com/aminnurrasyid/tweet-sentimentscore-api
                       urlstring =
                           'https://tweet-sentimentscore.herokuapp.com/?Query=' +
                               value.toString();
